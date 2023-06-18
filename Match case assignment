@@ -1,0 +1,228 @@
+Assignment - 7 Full Stack Web Development using Python MySirG
+
+Match Case
+
+1. Write a python script to display the number of days in a given month number.
+def get_days_in_month(month):
+    if month == 2:
+        return 28
+    elif month in [4, 6, 9, 11]:
+        return 30
+    else:
+        return 31
+
+month_number = int(input("Enter the month number: "))
+days = get_days_in_month(month_number)
+print(f"Number of days in month {month_number} is {days}.")
+2. Write a menu driven program to perform following operations - Addition, Subtraction,
+Multiplication, Division
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b != 0:
+        return a / b
+    else:
+        return "Cannot divide by zero."
+
+while True:
+    print("Select operation:")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Exit")
+    
+    choice = int(input("Enter your choice (1-5): "))
+
+    if choice == 5:
+        break
+
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+
+    if choice == 1:
+        print("Result:", add(num1, num2))
+    elif choice == 2:
+        print("Result:", subtract(num1, num2))
+    elif choice == 3:
+        print("Result:", multiply(num1, num2))
+    elif choice == 4:
+        print("Result:", divide(num1, num2))
+    else:
+        print("Invalid choice. Please try again.")
+3. Write a menu driven program with the following options:
+a. Check whether a given set of three numbers are lengths of an isosceles
+triangle or not
+b. Check whether a given set of three numbers are lengths of sides of a right
+angled triangle or not
+c. Check whether a given set of three numbers are equilateral triangle or not
+d. Exit.
+def is_isosceles(a, b, c):
+    return a == b or b == c or c == a
+
+def is_right_angled(a, b, c):
+    sides = [a, b, c]
+    sides.sort()
+    return sides[0]**2 + sides[1]**2 == sides[2]**2
+
+def is_equilateral(a, b, c):
+    return a == b and b == c
+
+while True:
+    print("Select option:")
+    print("a. Check for isosceles triangle")
+    print("b. Check for right-angled triangle")
+    print("c. Check for equilateral triangle")
+    print("d. Exit")
+
+    choice = input("Enter your choice (a-d): ")
+
+    if choice == 'd':
+        break
+
+    side1 = float(input("Enter the length of side 1: "))
+    side2 = float(input("Enter the length of side 2: "))
+    side3 = float(input("Enter the length of side 3: "))
+
+    if choice == 'a':
+        if is_isosceles(side1, side2, side3):
+            print("It is an isosceles triangle.")
+        else:
+            print("It is not an isosceles triangle.")
+    elif choice == 'b':
+        if is_right_angled(side1, side2, side3):
+            print("It is a right-angled triangle.")
+        else:
+            print("It is not a right-angled triangle.")
+    elif choice == 'c':
+        if is_equilateral(side1, side2, side3):
+            print("It is an equilateral triangle.")
+        else:
+            print("It is not an equilateral triangle.")
+    else:
+        print("Invalid choice. Please try again.")
+4. Write a program which takes user’s age and display the category of person. Age
+below 10 years- Kid, Age below 20 - Teen, Age below 40 - young, Age below 60 -
+Experienced, Age above or equal 60 - Senior Citizen.
+age = int(input("Enter your age: "))
+
+if age < 10:
+    category = "Kid"
+elif age < 20:
+    category = "Teen"
+elif age < 40:
+    category = "Young"
+elif age < 60:
+    category = "Experienced"
+else:
+    category = "Senior Citizen"
+
+print("Category:", category)
+5. Write a program which takes a number from user. Print Saurabh Shukla if the number
+is even, print Prateek Jain if the number is negative odd number and print Aditya
+Choudhary if number is positive odd number.
+number = int(input("Enter a number: "))
+
+if number % 2 == 0:
+    name = "Saurabh Shukla"
+elif number < 0 and number % 2 != 0:
+    name = "Prateek Jain"
+elif number > 0 and number % 2 != 0:
+    name = "Aditya Choudhary"
+else:
+    name = "Unknown"
+
+print("Name:", name)
+6. Write a python program to check whether a given string is a multiword string or single
+word string using match case statement
+import re
+
+text = input("Enter a string: ")
+
+if re.match(r'\w+\s+\w+', text):
+    print("Multiword string")
+else:
+    print("Single word string")
+7. Write a python program to check whether a given number is positive, negative or
+zero using match case statement
+number = float(input("Enter a number: "))
+
+result = match number:
+    case 0:
+        "Zero"
+    case n if n > 0:
+        "Positive"
+    case n if n < 0:
+        "Negative"
+
+print("Number is:", result)
+8. Write a python script to check whether two given strings are identical, first string
+comes before the second in dictionary order or first string comes after the second
+string in dictionary order using match case statement
+string1 = input("Enter the first string: ")
+string2 = input("Enter the second string: ")
+
+result = match (string1, string2):
+    case (string1, string2) if string1 == string2:
+        "Identical"
+    case (string1, string2) if string1 < string2:
+        "First string comes before the second in dictionary order"
+    case (string1, string2) if string1 > string2:
+        "First string comes after the second in dictionary order"
+
+print("Comparison result:", result)
+9. Write a python script to check whether a given year is
+a. Non century leap year
+b. Century leap year
+c. Non century non leap year
+d. Century non leap year
+year = int(input("Enter a year: "))
+
+result = match (year % 4 == 0, year % 100 == 0, year % 400 == 0):
+    case (True, False, _):
+        "Non-century leap year"
+    case (True, True, False):
+        "Century leap year"
+    case (False, _, _):
+        "Non-century non-leap year"
+    case (True, True, True):
+        "Century non-leap year"
+
+print("Year type:", result)
+10. Write a program to display day name on the basis of user’s liking of a colour. Ask
+user for his favorite colour. User can answer in a sentence like “I like red colour”.
+Assuming all colour name entered by user is in lowercase. Use match case to display
+day name associated with the colour.
+a. Yellow – Monday
+b. Blue - Tuesday
+c. Orange - Wednesday
+d. White - Thursday
+e. Black - Friday
+f. Red - Saturday
+g. All other colours – Sunday
+color = input("Enter your favorite color: ").lower()
+
+result = match color:
+    case "yellow":
+        "Monday"
+    case "blue":
+        "Tuesday"
+    case "orange":
+        "Wednesday"
+    case "white":
+        "Thursday"
+    case "black":
+        "Friday"
+    case "red":
+        "Saturday"
+    case _:
+        "Sunday"
+
+print("Day name:", result)
